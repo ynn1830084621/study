@@ -14,16 +14,18 @@
 <body>
     <button id = 'ldh'>刘德华</button>
     <button id = 'zxy'>张学友</button>
-    <img src = '1-21/images/ldh.jpg' alt = ''>
+    <img src = '../../images/ldh.jpg' alt = ''>
     <script>
-        var ldh = document.getElementsById('ldh');
-        var zxy = document.getElementsById('zxy');
+        var ldh = document.getElementById('ldh');
+        var zxy = document.getElementById('zxy');
         var img = document.querySelector('img');
         zxy.onclick = function() {
-            img.src = '1-21/images/zxy.jpg';
+            console.log("张学友");
+            img.src = '../../images/zxy.jpg';
         }
         ldh.onclick = function() {
-            img.src = 'images/ldh.jpg';
+            console.log("刘德华");
+            img.src = '../../images/ldh.jpg';
         }
     </script>
 </body>
