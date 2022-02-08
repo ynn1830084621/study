@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    var a = 1
+    var obj = {
+        a: 2,
+        func2: () => {
+        console.log(this.a)
+        },
+    func3: function() {
+    console.log(this.a)
+        }
+    }
+
+// func1
+    var func1  = () => {
+    console.log(this.a)
+    }
+
+// func2
+    var func2 = obj.func2
+// func3
+    var func3 = obj.func3
+
+    func1()
+    func2()
+    func3()
+    obj.func2()
+    obj.func3()
+    </script>
+</body>
+</html>
