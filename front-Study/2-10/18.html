@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let date = new Date();
+        setTimeout(() => {
+            console.log('1');
+        }, 2000)
+        setTimeout('console.log(2)', 1000);
+        setTimeout(function() {
+            console.log('3');
+        }, 1500);
+        while((new Date() - date) < 3000) {}
+    </script>
+</body>
+</html>

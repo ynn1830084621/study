@@ -7,7 +7,8 @@ A.prototype = {
 };
 let C =new A();
 A.prototype.d = 4;
-console.log(B.a);
-console.log(B.b);
-console.log(C.c);
-console.log(C.d);
+console.log(B.__proto__);
+console.log(C.__proto__);
+
+
+
