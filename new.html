@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Word(val) {
+            this.word = val;
+        }
+        Word.prototype = {
+            alert() {
+                alert(this.word);
+            }
+        }
+        var s = new Word('wsn');
+        s.add = function() {
+            console.log(this.word);
+            console.log(this);
+            console.dir(this);
+
+        }
+        s.add();
+    </script>
+</body>
+</html>
