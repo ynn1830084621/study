@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>显示隐藏密码</title>
+    <style>
+        .box {
+            position: relative;
+            width: 320px;
+            border-bottom: 1px solid #ccc;
+            margin: auto;
+        }
+        .box input {
+            width: 300px;
+            height: 30px;
+            border: 0;
+            outline: none;
+        }
+        .box img {
+            position: absolute;
+            width: 24px;
+            top: 2px;
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <label>
+            <img src="./images/close.png" alt="password" id="eye">
+        </label>
+        <input type="password" >
+    </div>
+    <script>
+        var eye = document.getElementById('eye');
+        var input = document.querySelector('input');
+        var flag = 0;
+        eye.onclick = function() {
+            // 点击一次之后， flag 一定要变化
+            if (flag == 0) {
+                this.src = './images/open.png';
+                input.type = 'text';
+                flag = 1;
+            } else {
+                this.src = './images/close.png';
+                input.type = 'password';
+                flag = 0;
+            }
+        }
+    </script>
+</body>
+</html>
