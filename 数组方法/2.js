@@ -22,7 +22,7 @@ const r2 = a2.some(value => value < 1)
 console.log(r1);//true
 console.log(r2);//false
 
-//4.filter() 筛选出满足函数的新数组
+//4.filter() 筛选出满足函数的数组
 const arr = [1, 2, 3]
 const newArr = arr.filter((value) => {
     return value > 1
