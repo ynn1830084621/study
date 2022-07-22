@@ -11,3 +11,5 @@ console.log(list.map((item, index) => {
         return item
     }
 }), list);
+
+console.log(7n + 3n);
