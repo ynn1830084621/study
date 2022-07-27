@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>键盘事件</title>
+</head>
+<body>
+    <script>
+        // document.onkeyup = function() {
+        //     console.log('我弹起了 onkeyup');
+        // }
+        document.addEventListener('keyup', function(e) {
+            console.log('我弹起了');
+            console.log('====================================');
+            console.log(e.key);
+        })
+        document.addEventListener('keydown', function() {
+            console.log('我按下了');
+        })
+        document.addEventListener('keypress', function() {
+            console.log('我按下了press');//不能识别功能键 顺序：keydown -> keypress -> keyup
+        })
+    </script>
+</body>
+</html>
