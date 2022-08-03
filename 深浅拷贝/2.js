@@ -15,3 +15,18 @@ function deepClone(target, map = new WeakMap) {
         return target
     }
 }
+console.log(deepClone([1, 2, 3]));
+
+//
+function deepCopy(obj) {
+    if (typeof obj === 'object') {
+        var result = obj.constructor === Array ? [] : {};
+        for (var i in obj) {
+        result[i] = typeof obj[i] === 'object' ? deepCopy(obj[i]) : obj[i];
+        }
+    } else {
+        var result = obj;
+    }
+    return result;
+}
+console.log(deepCopy([1, 2, 3]));

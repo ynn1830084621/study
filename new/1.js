@@ -4,6 +4,7 @@ function Dog(name, color, age) {
     this.color = color;
     this.age = age;
     //return rtnObj
+    return {}
 }
 
 Dog.prototype={
