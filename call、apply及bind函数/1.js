@@ -1,14 +1,16 @@
-Function.prototype.myCall = function (context, ...args) {
+Function.prototype.myCall = function (thisArg, ...args) {
     if (typeof this !== 'function') {
         console.log('type error');
     }
-    context = context || window; // 判断 context 是否存在，如果未传入则为 window
-    context.fn = this; // 将函数设为对象的方法
-    let result = context.fn(...args);
-    delete context.fn;
+    thisArg = thisArg || window; // 判断 thisArg 是否存在，如果未传入则为 window
+    thisArg.fn = this; // 将函数设为对象的方法
+    args = args || [];
+    let result = thisArg.fn(...args);
+    delete thisArg.fn;
     return result
 }
 
+// 测试
 let obj = { name: 123 }
 function foo(...args) {
     console.log(this.name, args)
