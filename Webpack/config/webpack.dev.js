@@ -50,8 +50,9 @@ module.exports = {
         host: 'localhost',//启动服务器域名
         port: '3000',//启动服务器端口号
         open: true,//是否服务器打开
+        hot: true,//开启HMR(热模块替换), 提升构建打包速度
     },
     //模块
     mode: 'development',
-    devtool: 'cheap-module-source-map' // "source-map" 用来增强调试速度
+    devtool: 'cheap-module-source-map' // 打包编译速度快，只反应行映射
 }

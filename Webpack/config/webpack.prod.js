@@ -1,5 +1,8 @@
 const ESLintPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const WorkboxPlugin = require('workbox-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -17,7 +20,10 @@ module.exports = {
             //loader的配置
             {
                 test: /\.css$/,
-                use: ["style-loader", "css-loader"],
+                use: [
+                    MiniCssExtractPlugin.loader, //将 CSS 提取到单独的文件
+                    "css-loader"
+                ],
             },
             {
                 test: /\.png$/,
@@ -44,9 +50,20 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, "../public/index.html")
-        })
+        }),
+        new MiniCssExtractPlugin({
+            filename: "static/css/main.css"
+        }),
+        new CssMinimizerPlugin(),//压缩css
+        new WorkboxPlugin.GenerateSW({
+            // these options encourage the ServiceWorkers to get in there fast
+            // and not allow any straggling "old" SWs to hang around
+            clientsClaim: true,
+            skipWaiting: true,
+        }),//PWA
     ],
     //模块
     mode: 'production',
-    devtool: 'source-map' // "source-map" 用来增强调试速度
+    devtool: 'source-map' // 打包编译速度较慢，反应行列映射
+    //devtool 开发者调试工具
 }
