@@ -1,15 +1,21 @@
 const path = require('path');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const TerserWebpackPlugin = require("terser-webpack-plugin");
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+
+const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
     entry: "./src/main.js",
     output: {
-        path: undefined,
-        filename: "static/js/[name].js",
-        chunkFilename: "static/js/[name].chunk.js",
+        path: isProduction ? path.resolve(__dirname, "../dist") : undefined,
+        filename: isProduction ? "static/js/[name].[contenthash:10].js" : "static/js/[name].js",
+        chunkFilename: isProduction ? "static/js/[name].[contenthash:10].chunk.js" : "static/js/[name].chunk.js",
         assetModuleFilename: "static/media/[hash:10][ext][query]",
+        clean: true,
     },
     module: {
         rules: [
@@ -17,7 +23,7 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    "style-loader",
+                    isProduction ? MiniCssExtractPlugin.loader : "style-loader",
                     "css-loader",
                     {
                         //处理css兼容性问题
@@ -54,7 +60,9 @@ module.exports = {
                 options: {
                     cacheDirectory: true,
                     cacheCompression: false,
-                    plugins: ["react-refresh/babel"] //激活js的HMR功能
+                    plugins: [
+                        !isProduction && "react-refresh/babel",
+                    ].filter(Boolean), //激活js的HMR功能
                 }
             }
         ]
@@ -70,28 +78,52 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, "../public/index.html")
         }),
-        new ReactRefreshWebpackPlugin, //激活js的HMR功能
-    ],
-    mode: 'development',
-    devtool: 'cheap-module-source-map',
+        isProduction && new MiniCssExtractPlugin({
+            filename: "static/css/[name].[contenthash:10].css",
+            chunkFilename: "static/css/[name].[contenthash:10].chunk.css",
+        }),
+        !isProduction && new ReactRefreshWebpackPlugin(),
+    ].filter(Boolean),
+    mode: isProduction ? 'production' : 'development',
+    devtool: isProduction ? 'source-map' : 'cheap-module-source-map',
     optimization: {
         splitChunks: {
             chunks: "all",
+            // cacheGroups: {
+            //     // react react-dom react-router-dom 打包成一个js文件
+            //     react: {
+            //         test: /[\\/]node_modules[\\/]react(.*)?[\\/]/,
+            //         name: 'chunk-react',
+            //         priority: 40,
+            //     },
+            //     // antd 单独打包
+            //     antd: {
+            //         test: /[\\/]node_modules[\\/]antd[\\/]/,
+            //         name: 'chunk-antd',
+            //         priority: 30,
+            //     },
+            //     // 剩下node-modules 单独打包
+            //     libs: {
+            //         test: /[\\/]node_modules[\\/]/,
+            //         name: 'chunk-libs',
+            //         priority: 20,
+            //     },
+            // },
         },
         runtimeChunk: {
             name: (entrypoint) => `runtime~${entrypoint.name}.js`,
         },
+        //是否需要进行压缩
+        minimize: isProduction,
+        minimizer: [
+            new CssMinimizerPlugin(), //css压缩
+            new TerserWebpackPlugin(), //js压缩
+        ]
     },
     //webpack解析模块加载选项
     resolve: {
         //自动补全文件扩展名
         extensions: ['.jsx', '.js', '.json']
     },
-    devServer: {
-        host: 'localhost',
-        port: '3001',
-        open: true,
-        hot: true,
-        historyApiFallback: true, //解决前端路由刷新404问题
-    },
+    performance: false,
 };
