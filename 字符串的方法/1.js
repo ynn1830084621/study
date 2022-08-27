@@ -65,3 +65,8 @@ console.log(parseInt('20'));//20
 console.log(parseInt('50', 1));//NaN
 console.log(parseInt('10.01'));//10
 console.log(parseFloat('10.01'));//10.01
+
+//检测位置
+let a = 'Hello world!';
+console.log(a.startsWith('Hello'));//true
+console.log(a.endsWith('!') );//true
