@@ -25,7 +25,7 @@ function promise() {
 }
 
 // 定义链式调用的then方法
-myPromise.prototype.then=function(onFullfilled,onRejected){
+myPromise.prototype.then = function(onFullfilled,onRejected){
     let self = this;
     switch(self.status){
         case "resolved":
