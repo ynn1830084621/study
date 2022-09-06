@@ -3,6 +3,7 @@ function CutePromise(executor) {
     this.value = null;
     this.reason = null;
     this.status = 'pending';
+    // 缓存两个队列，维护 resolved 和 rejected 各自对应的处理函数
     this.onResolvedQueue = [];
     this.onRejectedQueue = [];
     var self = this;
