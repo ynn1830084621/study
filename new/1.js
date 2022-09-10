@@ -4,7 +4,7 @@ function Dog(name, color, age) {
     this.color = color;
     this.age = age;
     //return rtnObj
-    return {}
+    // return {}
 }
 
 Dog.prototype={
@@ -34,3 +34,7 @@ function newObject() {
 }
 var dog2 = newObject(Dog, '小红', 'red', 2)
 console.log(dog2);//{ name: '小红', color: 'red', age: 2 }
+
+
+
+console.log(new Date());//2022-08-28T13:31:12.281Z
