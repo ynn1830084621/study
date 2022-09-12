@@ -4,14 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>利用动画属性</title>
+    <title>flex布局</title>
     <style>
         .center {
             background-color: red;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
         }
 
         html, body, .box {
@@ -21,7 +17,9 @@
         }
         
         .box {
-            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     </style>
 </head>
