@@ -1,19 +1,27 @@
+// 思想
+// 就是把数组元素作为数组的下标，然后用一个临时数组统计该元素出现的次数。
+// 数组的数据必须是整数，而且最大最小值相差的值不要过大，对于数据是负数的话，我实现的方案对此有优化」。
+// 1.计算出差值d,最小值小于0,加上本身add
+// 2.创建统计数组并统计对应元素个数
+// 3.统计数组做变形，后面的元素等于前面的元素之和,也就是排名数组
+// 4.遍历原始数组,从统计数组中找到正确位置,输出到结果数组
+// 时间复杂度：O(n+k)
+
 let countingSort = function(arr, flag = 0) {
     let min = arr[0],
-        max = arr[0],
-        len = arr.length;
+        max = arr[0];
         // 求最大最小值
-    for(let i = 0; i < len; i++) {
+    for(let i = 0; i < arr.length; i++) {
         max = Math.max(arr[i], max)
         min = Math.min(arr[i], min)
     }
+    
     // 1.计算出差值d,最小值小于0,加上本身add
-
     let d =  max - min,
         add = min < 0 ? -min : 0;
      //2.创建统计数组并统计对应元素个数 
     let countArray  = new Array(d+1+add).fill(0)
-    for(let i = 0; i < len; i++){
+    for(let i = 0; i < arr.length; i++){
         let demp = arr[i]- min + add
         countArray[ demp ] += 1 
     }
@@ -24,9 +32,9 @@ let countingSort = function(arr, flag = 0) {
         sum += countArray[i]
         countArray[i] = sum;
     }
-    let res = new Array(len)
+    let res = new Array(arr.length)
     // 4.遍历原始数组,从统计数组中找到正确位置,输出到结果数组
-    for(let i = 0; i < len; i++){
+    for (let i = 0; i < arr.length; i++) {
         let demp = arr[i] -min + add
         res[ countArray[demp] -1 ] = arr[i]
         countArray[demp] --;
@@ -34,5 +42,5 @@ let countingSort = function(arr, flag = 0) {
     return flag ? res.reverse() : res
 }
 
-let arr = [2, 9, 6, 7, 4, 3, 1, 7,0,-1,-2]
-console.log(countingSort(arr))
+let arr = [2, 9, 6, 7, 4, 3, 1, 7]
+console.log(countingSort(arr))// [1, 2, 3, 4, 6, 7, 7, 9]
