@@ -21,5 +21,6 @@ function fn(a, b){
 }
 var bound = fn.bindFn(obj, 1);
 bound(2); // 'ynn', [1, 2]
+console.log(bound);//[Function (anonymous)]
 
 
