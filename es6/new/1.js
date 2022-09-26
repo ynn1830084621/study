@@ -28,9 +28,9 @@ function newObject() {
     //将新对象的内部属性__proto__指向构造函数的原型，这样新对象就可以访问原型中的属性和方法
     obj.__proto__ = Constructor.prototype;
     //取得构造函数的返回值
-    let ret = Constructor.apply(obj, arguments);
+    let res = Constructor.apply(obj, arguments);
     //如果返回值是一个对象就返回该对象，否则返回构造函数的一个实例对象
-    return typeof ret === 'object' ? ret : obj;
+    return res instanceof Object ? res : obj;
 }
 var dog2 = newObject(Dog, '小红', 'red', 2)
 console.log(dog2);//{ name: '小红', color: 'red', age: 2 }
