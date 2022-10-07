@@ -1,9 +1,9 @@
-// for (var i = 0; i < 5; i++) {
-//     setTimeout(function() {
-//         console.log(new Date, i);
-//     }, 1000);
-// }
-// console.log(new Date, i);
+for (var i = 0; i < 5; i++) {
+    setTimeout(function() {
+        console.log(new Date, i);
+    }, 1000);
+}
+console.log(new Date, i);
 
 // 2022-08-15T06:15:22.906Z 5
 // 2022-08-15T06:15:23.912Z 5
@@ -30,11 +30,11 @@
 // 2022-08-15T06:15:54.067Z 3
 // 2022-08-15T06:15:54.068Z 4
 
-for (let i = 0; i < 5; i++) {
-    setTimeout(function() {
-        console.log(new Date, i);
-    }, 1000);
-}
+// for (let i = 0; i < 5; i++) {
+//     setTimeout(function() {
+//         console.log(new Date, i);
+//     }, 1000);
+// }
 // console.log(new Date, i); //报错
 
 
