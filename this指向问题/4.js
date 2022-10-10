@@ -1,10 +1,10 @@
-// 'use strict'
-// var a = 'window';
-// var b = function() {
-//     console.log(this === undefined);//true
-//     console.log(this.name);//报错
-// }
-// b()
+'use strict'
+var a = 'window';
+var b = function() {
+    console.log(this === undefined);//true
+    console.log(this.name);//报错
+}
+b()
 
 
 function a() {
