@@ -6,7 +6,6 @@ function Dog(name, color, age) {
     //return rtnObj
     // return {}
 }
-
 Dog.prototype={
     getName: function() {
         return this.name;
