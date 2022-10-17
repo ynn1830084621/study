@@ -33,4 +33,12 @@ function toTree(parenId, array) {
     return children
 }
 
-console.log(arrayToTree(input));
+console.log(arrayToTree(input)); 
+// {
+//     id: 1,
+//     val: '学校',
+//     children: [
+//       { id: 2, val: '班级1', children: [Array] },
+//       { id: 3, val: '班级2', children: [Array] }
+//     ]
+//   }
