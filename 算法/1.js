@@ -34,6 +34,7 @@ function toTree(parenId, array) {
 }
 
 console.log(arrayToTree(input)); 
+
 // {
 //     id: 1,
 //     val: '学校',
