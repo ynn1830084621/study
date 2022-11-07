@@ -11,5 +11,5 @@ function foo(){
     console.log(b)//2
     console.log(c)//4
     console.log(d)//d is not defined
-   } 
-   foo()
+} 
+foo()
