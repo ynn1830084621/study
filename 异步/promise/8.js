@@ -1,0 +1,5 @@
+Promise.resolve(1)
+    .then(Promise.resolve(2))
+    .then(3)
+    .then()
+    .then(console.log)
