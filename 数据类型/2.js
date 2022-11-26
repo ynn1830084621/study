@@ -9,3 +9,4 @@ console.log(typeof function () {}); // function
 console.log(typeof []); // object
 console.log(typeof {}); // object
 console.log(typeof null); // object
+console.log(typeof NAN);//undefined
