@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>移动端</title>
+    <style>
+        .move {
+            display: flex;
+        }
+        .move div:nth-child(1) {
+            background-color: yellow;
+            flex: 0 0 100px;
+        }
+        .move div:nth-child(2) {
+            background-color: red;
+            flex: 1 1 auto;
+        }
+        .move div:nth-child(3) {
+            background-color: yellow;
+            flex: 0 0 100px;
+        }
+        @media (min-device-width: 400px) and (max-device-width: 500px) {
+            .move div:nth-child(2) {
+                background-color: blue;
+            }
+        }
+        @media (min-device-width: 501px) and (max-device-width: 600px) {
+            .move div:nth-child(2) {
+                background-color: green;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="move">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+</body>
+</html>
