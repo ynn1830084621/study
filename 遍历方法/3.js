@@ -4,14 +4,14 @@ for (var key in a) {
     console.log(key);//0 1 2
 }
 
-
 const object = {
     name: 'ynn',
     age: 18,
 };
 for (let key in object) {
-    console.log(key + '---' + object[key]);
+    console.log(key + '---' + object[key]);//name---ynn age---18
 }
+
 
 const arr = [1, 2, 3]
 for (let key of arr) {
