@@ -1,7 +1,7 @@
 function foo() {
     console.log(this.bar);
 }
-bar = 'bar1';
+var bar = 'bar1';
 var o1 = {bar: 'bar2', foo: foo};
 var o2 = {bar: 'bar3', foo: () => { console.log(this.bar); }};
 foo();//undefined
